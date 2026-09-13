@@ -14,6 +14,9 @@ class MainMenu(QWidget):
     def initUI(self):
         self.vbox = QVBoxLayout()
         self.hbox = QHBoxLayout()
+        self.setLayout(self.vbox)
+        self.setStyleSheet("""
+        """)
         self.vbox.addWidget(self.title)
         self.vbox.addWidget(self.startButton)
         self.vbox.addWidget(self.exitButton)
