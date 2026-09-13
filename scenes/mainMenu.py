@@ -6,7 +6,7 @@ from Pyside6.QtWidgets import ( QWidget,
 
 class MainMenu(QWidget):
     def __init__(self):
-        super().__init__(self)
+        super().__init__()
         self.title = QLabel("Mental Math Master")
         self.startButton = QPushButton("Start")
         self.exitButton = QPushButton("Exit")
