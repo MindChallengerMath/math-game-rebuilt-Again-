@@ -5,7 +5,7 @@ from PySide6 import (QApplication)
 import sys
 
 if __name__ == "__main__":
-  app = QApplication
+  app = QApplication()
   sceneChanger = SceneChanger()
   operations = Operations()
   mainMenu = MainMenu()
