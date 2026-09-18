@@ -17,4 +17,19 @@ class Game(QWidget):
         self.button = QPushButton("Enter")
         self.yesButton = QPushButton("Yes")
         self.noButton = QPushButton("No")
+        self.initUI
+    def initUI(self):
+        self.vbox = QVBoxLayout()
+        self.setLayout(self.vbox)
+        self.setStyleSheet("""
+        """)
+        self.vbox.addWidget(self.label)
+        self.vbox.addWidget(self.userInput)
+        self.vbox.addWidget(self.button)
+        self.hbox = QHBoxLayout()
+        self.vbox.addLayout(self.hbox)
+        self.hbox.addWidget(self.yesbutton)
+        self.yesButton.hide()
+        self.hbox.addWidget(self.noButton)
+        self.noButton.hide()
         
