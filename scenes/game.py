@@ -14,39 +14,54 @@ class Game(QWidget):
         self.maxNum = 10
         self.score = 0
         self.equation()
+        self.scoreLabel = QLabel(f"Score: {self.score}")
         self.label = QLabel(f"{self.n1} {self.sign} {self.n2}")
         self.userInput = QLineEdit()
         self.button = QPushButton("Enter")
         self.button.clicked.connect(self.enter)
-        self.yesButton = QPushButton("Yes")
-        self.noButton = QPushButton("No")
+        self.restartButton = QPushButton("Restart")
+        self.mainMenuButton = QPushButton("Main Menu")
         self.initUI()
     def initUI(self):
         self.vbox = QVBoxLayout()
         self.setLayout(self.vbox)
         self.setStyleSheet("""
         """)
+        self.vbox.addWidget(self.scoreLabel)
         self.vbox.addWidget(self.label)
-        self.vbox.addWidget(self.errorLabel)
         self.vbox.addWidget(self.userInput)
         self.vbox.addWidget(self.button)
         self.hbox = QHBoxLayout()
         self.vbox.addLayout(self.hbox)
-        self.hbox.addWidget(self.yesButton)
-        self.yesButton.hide()
-        self.hbox.addWidget(self.noButton)
-        self.noButton.hide()
+        self.hbox.addWidget(self.restartButton)
+        self.restartButton.hide()
+        self.hbox.addWidget(self.mainMenuButton)
+        self.mainMenuButton.hide()
     def enter(self, value):
         try:
             value = float(self.userInput.text())
             if value == self.answer:
                 self.score += 10
+                self.scoreLabel.setText(f"Score: {self.score}")
+
                 self.equation()
+                self.label.setText(f"{self.n1} {self.sign} {self.n2}")
             else:
-                pass
+                self.lose()
 
         except ValueError:
             self.userInput.setText("This is not a number")
+    def lose(self):
+        self.scoreLabel.setText("You Lose")
+        self.label.setText(f"Final Score: {self.score}")
+        self.userInput.hide()
+        self.button.hide()
+        self.restartButton.show()
+        self.mainMenuButton.show()
+
+    def restart(self):
+        self.score = 0
+        self.scoreLabel.setText(f"Score: {self.score}")
             
     def equation(self):
         self.n1 = random.randint(1, self.maxNum)
