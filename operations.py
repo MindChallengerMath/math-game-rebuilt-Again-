@@ -1,9 +1,9 @@
 class Operations:
-  def plus(n1, n2):
+  def plus(self, n1, n2):
     return n1 + n2
-  def minus(n1, n2):
+  def minus(self, n1, n2):
     return n1 - n2
-  def multiply(n1, n2):
+  def multiply(self, n1, n2):
     return n1 * n2
-  def divide(n1, n2):
+  def divide(self, n1, n2):
     return n1 / n2
