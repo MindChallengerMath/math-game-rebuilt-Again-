@@ -1,5 +1,5 @@
 from sceneChanger import SceneChanger
-from gameSetup.operations import Operations
+from operations import Operations
 from scenes.mainMenu import MainMenu
 from scenes.difficultyMenu import DifficultyMenu
 from scenes.game import Game
