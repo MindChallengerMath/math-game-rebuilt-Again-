@@ -8,18 +8,21 @@ from PySide6.QtCore import Qt
 import random
 
 class Game(QWidget):
-    def __init__(self, operations):
+    def __init__(self, operations, difficultyMenu):
         super().__init__()
         self.operations = operations
-        self.maxNum = 10
+        self.difficultyMenu = difficultyMenu
+        self.defaultMaxNum = 10
+        self.maxNum = self.defaultMaxNum
         self.score = 0
-        self.equation()
+        self.createEquation()
         self.scoreLabel = QLabel(f"Score: {self.score}")
-        self.label = QLabel(f"{self.n1} {self.sign} {self.n2}")
+        self.label = QLabel(self.equation)
         self.userInput = QLineEdit()
         self.button = QPushButton("Enter")
         self.button.clicked.connect(self.enter)
         self.restartButton = QPushButton("Restart")
+        self.restartButton.clicked.connect(self.restart)
         self.mainMenuButton = QPushButton("Main Menu")
         self.initUI()
     def initUI(self):
@@ -42,10 +45,12 @@ class Game(QWidget):
             value = float(self.userInput.text())
             if value == self.answer:
                 self.score += 10
+                self.maxNum += self.difficultyMenu.difficulty
+                print(self.maxNum)
                 self.scoreLabel.setText(f"Score: {self.score}")
 
-                self.equation()
-                self.label.setText(f"{self.n1} {self.sign} {self.n2}")
+                self.createEquation()
+                self.label.setText(self.equation)
             else:
                 self.lose()
 
@@ -61,9 +66,17 @@ class Game(QWidget):
 
     def restart(self):
         self.score = 0
+        self.maxNum = self.defaultMaxNum
+        self.createEquation()
         self.scoreLabel.setText(f"Score: {self.score}")
+        self.label.setText(self.equation)
+        self.restartButton.hide()
+        self.mainMenuButton.hide()
+        self.userInput.clear()
+        self.userInput.show()
+        self.button.show()
             
-    def equation(self):
+    def createEquation(self):
         self.n1 = random.randint(1, self.maxNum)
         self.n2 = random.randint(2, self.maxNum)
         self.sign = random.choice(("+", "-", "*", "/"))
@@ -76,4 +89,5 @@ class Game(QWidget):
             self.answer = self.operations.multiply(self.n1, self.n2)
         else:
             self.answer = self.operations.divide(self.n1, self.n2)
+        self.equation = f"{self.n1} {self.sign} {self.n2}"
         

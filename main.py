@@ -12,7 +12,7 @@ if __name__ == "__main__":
   operations = Operations()
   mainMenu = MainMenu(sceneChanger)
   difficultyMenu = DifficultyMenu(sceneChanger)
-  game = Game(operations)
+  game = Game(operations, difficultyMenu)
   #This puts the widgets into the index
   sceneChanger.stack.insertWidget(0, mainMenu)
   sceneChanger.stack.insertWidget(1, difficultyMenu)
