@@ -27,7 +27,6 @@ class Game(QWidget):
         self.setStyleSheet("""
         """)
         self.vbox.addWidget(self.label)
-        self.vbox.addWidget(self.errorLabel)
         self.vbox.addWidget(self.userInput)
         self.vbox.addWidget(self.button)
         self.hbox = QHBoxLayout()
