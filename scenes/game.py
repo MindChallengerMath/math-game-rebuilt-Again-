@@ -8,10 +8,11 @@ from PySide6.QtCore import Qt
 import random
 
 class Game(QWidget):
-    def __init__(self, operations, difficultyMenu):
+    def __init__(self, operations, difficultyMenu, sceneChanger):
         super().__init__()
         self.operations = operations
         self.difficultyMenu = difficultyMenu
+        self.sceneChanger = sceneChanger
         self.defaultMaxNum = 10
         self.maxNum = self.defaultMaxNum
         self.score = 0
@@ -24,6 +25,7 @@ class Game(QWidget):
         self.restartButton = QPushButton("Restart")
         self.restartButton.clicked.connect(self.restart)
         self.mainMenuButton = QPushButton("Main Menu")
+        self.mainMenuButton.clicked.connect(self.mainMenu)
         self.initUI()
     def initUI(self):
         self.vbox = QVBoxLayout()
@@ -59,6 +61,7 @@ class Game(QWidget):
     def lose(self):
         self.scoreLabel.setText("You Lose")
         self.label.setText(f"Final Score: {self.score}")
+        self.userInput.clear()
         self.userInput.hide()
         self.button.hide()
         self.restartButton.show()
@@ -72,9 +75,10 @@ class Game(QWidget):
         self.label.setText(self.equation)
         self.restartButton.hide()
         self.mainMenuButton.hide()
-        self.userInput.clear()
         self.userInput.show()
         self.button.show()
+    def mainMenu(self):
+        self.sceneChanger.changeScene(0)
             
     def createEquation(self):
         self.n1 = random.randint(1, self.maxNum)
