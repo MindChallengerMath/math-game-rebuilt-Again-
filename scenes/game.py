@@ -78,6 +78,7 @@ class Game(QWidget):
         self.userInput.show()
         self.button.show()
     def mainMenu(self):
+        self.restart()
         self.sceneChanger.changeScene(0)
             
     def createEquation(self):

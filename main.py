@@ -1,3 +1,4 @@
+import sys
 from sceneChanger import SceneChanger
 from operations import Operations
 from scenes.mainMenu import MainMenu
@@ -7,7 +8,7 @@ from PySide6.QtWidgets import (QApplication)
 
 
 if __name__ == "__main__":
-  app = QApplication()
+  app = QApplication(sys.argv)
   sceneChanger = SceneChanger()
   operations = Operations()
   mainMenu = MainMenu(sceneChanger)
@@ -18,4 +19,4 @@ if __name__ == "__main__":
   sceneChanger.stack.insertWidget(1, difficultyMenu)
   sceneChanger.stack.insertWidget(2, game)
   sceneChanger.stack.show()
-  app.exec()
+  sys.exit(app.exec())
