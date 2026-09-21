@@ -46,19 +46,27 @@ class MainMenu(QWidget):
       
         self.hbox.addWidget(self.noButton)
         self.noButton.hide()
+
     def start(self):
         self.sceneChanger.changeScene(1)
+
     def exit(self):
         self.label.setText("Do you want to exit?")
+
         self.startButton.hide()
         self.exitButton.hide()
+
         self.yesButton.show()
         self.noButton.show()
+
     def yes(self):
         sys.exit()
+
     def no(self):
         self.label.setText(self.title)
+
         self.yesButton.hide()
         self.noButton.hide()
+        
         self.startButton.show()
         self.exitButton.show()

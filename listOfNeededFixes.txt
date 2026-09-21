@@ -1,2 +1,1 @@
-You need to make sure the game resets
-when the player presses mainMenu
+Make it look nice
