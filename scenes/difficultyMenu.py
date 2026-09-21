@@ -29,6 +29,7 @@ class DifficultyMenu(QWidget):
             value = int(self.userInput.text())
             if value >= 0:
                 self.difficulty = value
+                self.userInput.clear()
                 self.sceneChanger.changeScene(2)
             else:
                 self.label.setText("Input a positive number(Enter Difficulty)")
