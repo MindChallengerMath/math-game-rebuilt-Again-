@@ -25,6 +25,8 @@ class Game(QWidget):
         self.label = QLabel(self.equation)
 
         self.userInput = QLineEdit()
+        self.userInput.returnPressed.connect(self.enter)
+        
 
         self.button = QPushButton("Enter")
         self.button.clicked.connect(self.enter)
@@ -56,12 +58,14 @@ class Game(QWidget):
 
         self.hbox.addWidget(self.mainMenuButton)
         self.mainMenuButton.hide()
-    def enter(self, value):
+    def enter(self, value=0):
         try:
-            value = float(self.userInput.text())
+            value = round(float(self.userInput.text()), 2)
+            print(value)
             if value == self.answer:
-                self.score += 10
+                self.score += 10 + self.difficultyMenu.difficulty * 0.9
                 self.maxNum += self.difficultyMenu.difficulty
+                self.userInput.clear()
                 print(self.maxNum)
                 self.scoreLabel.setText(f"Score: {self.score}")
 
@@ -113,13 +117,13 @@ class Game(QWidget):
         self.sign = random.choice(("+", "-", "*", "/"))
 
         if self.sign == "+":
-            self.answer = self.operations.plus(self.n1, self.n2)
+            self.answer = round(self.operations.plus(self.n1, self.n2), 2)
         elif self.sign == "-":
-            self.answer = self.operations.minus(self.n1, self.n2)
+            self.answer = round(self.operations.minus(self.n1, self.n2), 2)
         elif self.sign == "*":
-            self.answer = self.operations.multiply(self.n1, self.n2)
+            self.answer = round(self.operations.multiply(self.n1, self.n2), 2)
         else:
-            self.answer = self.operations.divide(self.n1, self.n2)
-            
+            self.answer = round(self.operations.divide(self.n1, self.n2), 2)
+
         self.equation = f"{self.n1} {self.sign} {self.n2}"
         

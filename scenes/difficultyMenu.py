@@ -14,6 +14,7 @@ class DifficultyMenu(QWidget):
         self.label = QLabel("Enter desired difficulty(Interger)")
 
         self.userInput = QLineEdit()
+        self.userInput.returnPressed.connect(self.enterDifficulty)
 
         self.button = QPushButton("Enter")
         self.button.clicked.connect(self.enterDifficulty)
@@ -30,7 +31,7 @@ class DifficultyMenu(QWidget):
         self.vbox.addWidget(self.label)
         self.vbox.addWidget(self.userInput)
         self.vbox.addWidget(self.button)
-    def enterDifficulty(self, value):
+    def enterDifficulty(self, value=0):
         try:
             value = int(self.userInput.text())
             if value > 0:
