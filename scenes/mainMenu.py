@@ -13,6 +13,7 @@ class MainMenu(QWidget):
         self.sceneChanger = sceneChanger
         self.title = "Mental Math Master"
         self.label = QLabel(self.title)
+        self.label.setAlignment(Qt.AlignCenter)
       
         self.startButton = QPushButton("Start")
         self.startButton.clicked.connect(self.start)
@@ -33,6 +34,8 @@ class MainMenu(QWidget):
       
         self.setLayout(self.vbox)
         self.setStyleSheet("""
+        QWidget{background-color: #2d2929; color: #0d8fec}
+        QLabel{background-color: #231f1f}
         """)
       
         self.vbox.addWidget(self.label)

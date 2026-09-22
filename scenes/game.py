@@ -43,6 +43,8 @@ class Game(QWidget):
         self.setLayout(self.vbox)
 
         self.setStyleSheet("""
+        QWidget{background-color: #2d2929; color: #0d8fec}
+        QLabel{background-color: #231f1f}
         """)
 
         self.vbox.addWidget(self.scoreLabel)
