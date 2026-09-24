@@ -34,7 +34,8 @@ class MainMenu(QWidget):
       
         self.setLayout(self.vbox)
         self.setStyleSheet("""
-        QWidget{background-color: #2d2929; color: #0d8fec}
+        QWidget{background-color: #2d2929; color: #0d8fec;
+        font-family: "Times New Roman";}
         QLabel{background-color: #231f1f}
         """)
       
