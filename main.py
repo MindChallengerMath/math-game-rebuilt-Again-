@@ -18,5 +18,7 @@ if __name__ == "__main__":
   sceneChanger.stack.insertWidget(0, mainMenu)
   sceneChanger.stack.insertWidget(1, difficultyMenu)
   sceneChanger.stack.insertWidget(2, game)
+  sceneChanger.stack.setWindowTitle("Mental Math Master")
+  sceneChanger.stack.setGeometry(0, 0, 500, 500)
   sceneChanger.stack.show()
   sys.exit(app.exec())

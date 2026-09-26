@@ -36,7 +36,10 @@ class MainMenu(QWidget):
         self.setStyleSheet("""
         QWidget{background-color: #2d2929; color: #0d8fec;
         font-family: "Times New Roman";}
-        QLabel{background-color: #231f1f}
+        QLabel{background-color: #231f1f; border-style: groove;
+        border-width: 5px; border-color: red; padding: 20px;}
+        QPushButton{border-style: outset; border-width: 5px;
+        border-color: #2a2928;}
         """)
       
         self.vbox.addWidget(self.label)
