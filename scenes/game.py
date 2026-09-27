@@ -22,10 +22,13 @@ class Game(QWidget):
         self.createEquation()
 
         self.scoreLabel = QLabel(f"Score: {self.score}")
+        self.scoreLabel.setAlignment(Qt.AlignCenter)
         self.label = QLabel(self.equation)
+        self.label.setAlignment(Qt.AlignCenter)
 
         self.userInput = QLineEdit()
         self.userInput.returnPressed.connect(self.enter)
+        self.userInput.setAlignment(Qt.AlignCenter)
         
 
         self.button = QPushButton("Enter")
@@ -42,10 +45,6 @@ class Game(QWidget):
         self.vbox = QVBoxLayout()
         self.setLayout(self.vbox)
 
-        self.setStyleSheet("""
-        QWidget{background-color: #2d2929; color: #0d8fec}
-        QLabel{background-color: #231f1f}
-        """)
 
         self.vbox.addWidget(self.scoreLabel)
         self.vbox.addWidget(self.label)

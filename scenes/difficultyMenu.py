@@ -12,9 +12,11 @@ class DifficultyMenu(QWidget):
 
         self.difficulty = 0
         self.label = QLabel("Enter desired difficulty(Interger)")
+        self.label.setAlignment(Qt.AlignCenter)
 
         self.userInput = QLineEdit()
         self.userInput.returnPressed.connect(self.enterDifficulty)
+        self.userInput.setAlignment(Qt.AlignCenter)
 
         self.button = QPushButton("Enter")
         self.button.clicked.connect(self.enterDifficulty)
@@ -25,10 +27,6 @@ class DifficultyMenu(QWidget):
         self.vbox = QVBoxLayout()
         self.setLayout(self.vbox)
 
-        self.setStyleSheet("""
-        QWidget{background-color: #2d2929; color: #0d8fec}
-        QLabel{background-color: #231f1f}
-        """)
 
         self.vbox.addWidget(self.label)
         self.vbox.addWidget(self.userInput)
