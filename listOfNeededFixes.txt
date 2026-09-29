@@ -1,2 +1,0 @@
-Make it look nice
-Make so that the error text disapears when the player goes to type
