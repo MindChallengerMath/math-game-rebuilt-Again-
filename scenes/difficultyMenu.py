@@ -11,7 +11,8 @@ class DifficultyMenu(QWidget):
         self.sceneChanger = sceneChanger
 
         self.difficulty = 0
-        self.label = QLabel("Enter desired difficulty(Interger)")
+        self.defaultText = "Enter desired difficulty(Interger)"
+        self.label = QLabel(f"{self.defaultText}")
         self.label.setAlignment(Qt.AlignCenter)
 
         self.userInput = QLineEdit()
@@ -36,6 +37,7 @@ class DifficultyMenu(QWidget):
             value = int(self.userInput.text())
             if value > 0:
                 self.difficulty = value
+                self.label.setText(f"{self.defaultText}")
                 self.userInput.clear()
                 self.sceneChanger.changeScene(2)
             elif value == 0:
